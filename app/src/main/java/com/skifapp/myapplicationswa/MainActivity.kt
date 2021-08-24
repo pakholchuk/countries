@@ -11,6 +11,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -53,14 +55,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationswaTheme {
-                Image(painterResource(R.drawable.es), null)
-                Text("\uF1F7\uF1FA New", fontSize = 44.sp)
-
+//                var country by remember { mutableStateOf(World.random()) }
+//                val flagResId by remember(country) { mutableStateOf(resources.getIdentifier(country.iso3166Code.lowercase(), "drawable", packageName))}
+//                Image(painterResource(flagResId), null, modifier= Modifier.clickable { country = World.random() })
+//                Text("\uF1F7\uF1FA New", fontSize = 44.sp)
+                LazyColumn {
+                    items(World.getAll()) { country ->
+                        val flagResId by remember(country) { mutableStateOf(resources.getIdentifier(country.iso3166Code.lowercase(), "drawable", packageName))}
+                        Row {
+                            Text(country.name)
+                            if (flagResId > 0) Image(painterResource(flagResId), null, Modifier.size(40.dp, 30.dp))
+                            else Text("MISSED")
+                        }
+                    }
+                }
             }
         }
     }
 }
-
 
 @Composable
 fun Greeting(name: String) {

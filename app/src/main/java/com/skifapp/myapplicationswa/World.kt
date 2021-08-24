@@ -1,6 +1,12 @@
 package com.skifapp.myapplicationswa
 
-class World {
+import kotlin.random.Random
+
+object World {
+
+    fun random(): Country = countries[Random.nextInt(countries.size)]
+    fun getAll(): List<Country> = countries
+
     private val countries: List<Country> = listOf(
         Country(name = "Afghanistan", callingCode = 93, iso3166Code = "AF", phoneLength = 9),
         Country(name = "Åland Islands", callingCode = 358, iso3166Code = "AX", phoneLength = 10),
@@ -35,7 +41,7 @@ class World {
         Country(name = "Bolivia", callingCode = 591, iso3166Code = "BO", phoneLength = null),
         Country(name = "Bonaire", callingCode = 599, iso3166Code = "BQ", phoneLength = null),
         Country(
-            name = "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+            name = "Bosnia and Herzegovina",
             callingCode = 387,
             iso3166Code = "BA",
             phoneLength = 8
@@ -83,7 +89,6 @@ class World {
         Country(name = "Denmark", callingCode = 45, iso3166Code = "DK", phoneLength = 8),
         Country(name = "Djibouti", callingCode = 253, iso3166Code = "DJ", phoneLength = null),
         Country(name = "Dominica", callingCode = 1, iso3166Code = "DM", phoneLength = 10),
-        Country(name = "Dominican Republic", callingCode = 1, iso3166Code = "DO", phoneLength = 10),
         Country(name = "Ecuador", callingCode = 593, iso3166Code = "EC", phoneLength = null),
         Country(name = "Egypt", callingCode = 20, iso3166Code = "EG", phoneLength = 10),
         Country(name = "El Salvador", callingCode = 503, iso3166Code = "SV", phoneLength = 8),
@@ -144,7 +149,9 @@ class World {
         Country(name = "Japan", callingCode = 81, iso3166Code = "JP", phoneLength = 10),
         Country(name = "Jersey", callingCode = 44, iso3166Code = "JE", phoneLength = 10),
         Country(name = "Jordan", callingCode = 962, iso3166Code = "JO", phoneLength = null),
-        Country(name = "Kazakhstan", callingCode = 7, iso3166Code = "KZ", phoneLength = 10),
+        Country(name = "Kazakhstan", callingCode = 7, iso3166Code = "KZ", phoneLength = 10, mobilePhonePrefixes = listOf(
+            700, 701, 702, 705, 707, 708, 747, 771, 775, 776, 777, 778
+        )),
         Country(name = "Kenya", callingCode = 254, iso3166Code = "KE", phoneLength = 10),
         Country(name = "Kiribati", callingCode = 686, iso3166Code = "KI", phoneLength = 8),
         Country(name = "Kosovo", callingCode = 383, iso3166Code = "XK", phoneLength = 8),
@@ -244,10 +251,13 @@ class World {
         Country(name = "Réunion", callingCode = 262, iso3166Code = "RE", phoneLength = 9),
         Country(name = "Romania", callingCode = 40, iso3166Code = "RO", phoneLength = 10),
         Country(
-            name = "Russia (Russian Federation)",
+            name = "Russia",
             callingCode = 7,
             iso3166Code = "RU",
-            phoneLength = 10
+            phoneLength = 10,
+            mobilePhonePrefixes = listOf(
+                91, 92, 93, 96, 901, 902, 903, 904, 905, 906, 908, 909, 950, 951, 952, 953, 980, 983
+            )
         ),
         Country(name = "Rwanda", callingCode = 250, iso3166Code = "RW", phoneLength = null),
         Country(
@@ -257,7 +267,7 @@ class World {
             phoneLength = null
         ),
         Country(
-            name = "Saint Helena and Tristan da Cunha (not Ascenscion)",
+            name = "Saint Helena and Tristan da Cunha",
             callingCode = 290,
             iso3166Code = "SH",
             phoneLength = 4
@@ -297,7 +307,7 @@ class World {
         Country(name = "Sierra Leone", callingCode = 232, iso3166Code = "SL", phoneLength = null),
         Country(name = "Singapore", callingCode = 65, iso3166Code = "SG", phoneLength = 8),
         Country(
-            name = "Slovakia (Slovak Republic)",
+            name = "Slovakia",
             callingCode = 421,
             iso3166Code = "SK",
             phoneLength = 9
@@ -359,7 +369,7 @@ class World {
             phoneLength = 10
         ),
         Country(
-            name = "United States (USA)",
+            name = "USA",
             callingCode = 1,
             iso3166Code = "US",
             phoneLength = 10
